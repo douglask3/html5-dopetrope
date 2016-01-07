@@ -10,7 +10,7 @@
                 <div class="4u">
                     <section class="box">
                         {% if article.picture is defined %}
-                        <a href="{{ SITEURL }}/{{ article.url }}" class="image image-full"><img src="{{ SITEURL }}/{{ article.picture }}" alt=""/></a>
+                        <a href="{{ SITEURL }}/{{ article.url }}" class="image image-full"><img src="{{ article.picture }}" alt=""/></a>
                         {% endif %}
                         <header>
                             <h3>{{article.title }}</h3>
