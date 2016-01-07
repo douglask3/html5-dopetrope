@@ -63,6 +63,9 @@
 			color: inherit;
 			text-decoration: none;
 		}
+		h1.latest_sidebar {
+		    color: #fff;
+		}
 
 	a
 	{
@@ -74,7 +77,6 @@
 		{
 			text-decoration: none;
 		}
-
 	.major
 	{
 		position: relative;
@@ -832,3 +834,28 @@ article em {
   font-style: italic;
   font-weight: bold;
 }
+
+<style>
+#nav {
+    line-height:30px;
+    height:300px;
+    width:100px;
+    float:left;
+    padding:5px;
+}
+/* #ffeeee; */
+#latest_sidebar {
+	background-color: #ffeeee;
+	width: 300px;
+    float:left;
+    border: 1px solid #d52349;
+	margin: 25px;
+	color: #009900;
+}
+
+#latest_sidebar_header {
+	background: #353434 url('images/bg02.png');
+	padding: 15px;
+	width: 100%;
+}
+</style>
