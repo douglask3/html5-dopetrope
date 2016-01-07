@@ -1,7 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
+
 <div class="row">
 	<div class="12u">
+
+		<div  class="12u", style="padding-top: 1em; padding-bottom: 1em;">
+			<section class = "box">
+				<hr class="title">
+					<h1 align="center"> {{page.title}} </h1>
+				<hr class="title">
+			</section>
+		</div>
+
 		<!-- Portfolio -->
 		<section>
 			<div>
@@ -11,41 +21,62 @@
 							{% if page.picture is defined %}
 							<a href="#" class="image image-full"><img src="{{ page.picture }}"/></a>
 							{% endif %}
-							<!-- Tag news feed -->
+
 							{{ page.content }}
-							<hr class="title">
-							<h1 align="center"> Latest in {{page.title}} </h1>
-							<hr class="title">
-							<div class="row">
-								{% set n = 0 %}
-								{% for article in articles if n < 7 %}
-									{% if article.tag == page.title %}
-										{% set n = n + 1 %}
-										<div class="4u">
-											<section>
-													<h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
-													<hr>
-													{% if article.picture is defined %}
-														<a href="{{ SITEURL }}/{{ article.url }}" class="image image-thumb"><img src="{{ article.picture }}"/></a>
-												    {% endif %}
-													{{ article.summary[3:102] }}
-													<a href="{{ SITEURL }}/{{ article.url }}"> . . . </a>
-													<hr>
-											</section>
-										</div>
-										{% if n == 3 %}
-											</div>
-											<div class="row">
-										{% endif %}
-									{% endif %}
-								{% endfor %}
-							</div>
-							<!-- End Tag news feed -->
 						</article>
 					</div>
 				</div>
 			</div>
 		</section>
+
+		<!-- Tag news feed -->
+		<div class="12u", style="padding-top: 1em; padding-bottom: 1em">
+			<section class = "box">
+				<hr class="title">
+					<h1 align="center"> Latest {{page.title}} blog</h1>
+				<hr class="title">
+			</section>
+		</div>
+
+		<div class="12u">
+		    <section>
+				{% set n = 0 %}
+				{% for article in articles if n < 2 %}
+					{% if article.tag == page.title %}
+						{% set n = n + 1 %}
+			            {% if loop.index0 % 3  == 0 %}
+			            	<div class="row">
+			            {% endif %}
+		                <div class="4u">
+		                    <section class="box">
+		                        {% if article.picture is defined %}
+		                        <a href="{{ SITEURL }}/{{ article.url }}" class="image image-full"><img src="{{ article.picture }}" alt=""/></a>
+		                        {% endif %}
+		                        <header>
+		                            <hr>
+		                            <h2>{{article.title }}</h2>
+		                            <span class="byline">{{ article.date }}</span>
+		                            <hr>
+		                        </header>
+		                        {{ article.summary }}
+		                        <footer class="actions">
+		                            <a href="{{ SITEURL }}/{{ article.url }}" class="button button-icon button-icon-1">Continue Reading</a>
+		                        </footer>
+		                    </section>
+		                </div>
+			            {% if loop.index % 3  == 0 %}
+			            	</div>
+			            {% endif %}
+			        {% endif %}
+		        {% endfor %}
+		    </section>
+		</div>
+
+		<p class="paginator">
+			<a href="{{ SITEURL }}/category/{{ page.url[6:] }}"> More {{ page.name }} posts here </a>
+		</p>
+		<!-- End Tag news feed -->
 	</div>
 </div>
+
 {% endblock %}
