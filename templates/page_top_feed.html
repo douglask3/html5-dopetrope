@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+	<div class="12u">
+		<!-- Portfolio -->
+		<section>
+			<div>
+				<div class="12u skel-cell-mainContent">
+					<!-- Content -->
+						<article class="box is-post">
+							{% if page.picture is defined %}
+							<a href="#" class="image image-full"><img src="{{ page.picture }}"/></a>
+							{% endif %}
+							<!-- Tag news feed -->
+							<hr class="title">
+							<h1 align="center"> Latest in {{page.title}} </h1>
+							<hr class="title">
+							<div class="row">
+								{% set n = 0 %}
+								{% for article in articles if n < 7 %}
+									{% if article.tag == page.title %}
+										{% set n = n + 1 %}
+										<div class="4u">
+											<section>
+													<h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+													<hr>
+													{% if article.picture is defined %}
+														<a href="{{ SITEURL }}/{{ article.url }}" class="image image-thumb"><img src="{{ article.picture }}"/></a>
+												    {% endif %}
+													{{ article.summary[3:102] }}
+													<a href="{{ SITEURL }}/{{ article.url }}"> . . . </a>
+													<hr>
+											</section>
+										</div>
+										{% if n == 3 %}
+											</div>
+											<div class="row">
+										{% endif %}
+									{% endif %}
+								{% endfor %}
+							</div>
+							<!-- End Tag news feed -->
+							{{ page.content }}
+						</article>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
+{% endblock %}
