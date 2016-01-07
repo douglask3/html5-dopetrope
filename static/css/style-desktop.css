@@ -235,6 +235,7 @@
 		#nav > ul
 		{
 			margin: 0;
+			background: #353434 url('images/bg02.png');
 		}
 
 		#nav > ul > li > ul
@@ -245,14 +246,16 @@
 		#nav > ul > li
 		{
 			display: inline-block;
+			font: Arial Black;
 			font-style: italic;
+			font-size: 120%;
 			margin: 0 0.35em 0 0.35em;
 		}
 
 			#nav > ul > li > a
 			{
 				border-radius: 5px;
-				color: #5d5d5d;
+				color: #fff;
 				text-decoration: none;
 				padding: 0.6em 1.2em 0.6em 1.2em;
 				-moz-transition: background-color .25s ease-in-out;
@@ -270,6 +273,7 @@
 			#nav > ul > li:hover > a
 			{
 				background: #f3f3f3;
+				color: #5d5d5d;
 			}
 
 		#nav > ul > li.active
