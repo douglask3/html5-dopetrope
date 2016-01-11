@@ -78,6 +78,9 @@
 		h1.latest_sidebar {
 		    color: #fff;
 		}
+		h3.publication {
+			text-align: left;
+		}
 
 	a
 	{
@@ -142,7 +145,7 @@
 
 	p, ul, ol, dl, table
 	{
-		margin-bottom: 2em;
+		margin-bottom: 0em;
 	}
 
 	section,
