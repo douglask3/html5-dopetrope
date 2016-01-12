@@ -37,13 +37,10 @@
 		<div class="12u">
 		    <section>
 				{% set n = 0 %}
-				{% for article in articles if n < 2 %}
+				{% for article in articles if n < 3 %}
 					{% if article.tag == page.title %}
 						{% set n = n + 1 %}
-			            {% if loop.index0 % 3  == 0 %}
-			            	<div class="row">
-			            {% endif %}
-		                <div class="4u">
+		                <div class="4u", style = "padding-right:1em;">
 		                    <section class="box">
 		                        {% if article.picture is defined %}
 		                        <a href="{{ SITEURL }}/{{ article.url }}" class="image image-full"><img src="{{ article.picture }}" alt=""/></a>
@@ -60,9 +57,6 @@
 		                        </footer>
 		                    </section>
 		                </div>
-			            {% if loop.index % 3  == 0 %}
-			            	</div>
-			            {% endif %}
 			        {% endif %}
 		        {% endfor %}
 		    </section>

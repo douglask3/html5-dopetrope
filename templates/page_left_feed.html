@@ -42,9 +42,6 @@
 				{% for article in articles if n < 2 %}
 					{% if article.tag == page.title %}
 						{% set n = n + 1 %}
-			            {% if loop.index0 % 3  == 0 %}
-			            	<div class="row">
-			            {% endif %}
 		                <div class="12u", style = "padding-top:1em;">
 		                    <section class="box">
 		                        {% if article.picture is defined %}
@@ -62,9 +59,6 @@
 		                        </footer>
 		                    </section>
 		                </div>
-			            {% if loop.index % 3  == 0 %}
-			            	</div>
-			            {% endif %}
 			        {% endif %}
 		        {% endfor %}
 		    </section>
