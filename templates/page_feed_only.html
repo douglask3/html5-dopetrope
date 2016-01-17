@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row">
+	<div class="12u">
+
+		<!-- Page specific header -->
+		<!-- picture -->
+		<div>
+			{% if page.picture is defined %}
+			<a href="#" class="image image-full"><img src="{{ page.picture }}"/></a>
+			{% endif %}
+		</div>
+
+		<!-- title -->
+		<div  class="12u", style="padding-top: 1em; padding-bottom: 1em;">
+			<section class = "box">
+				<hr class="title">
+					<h1 align="center"> {{page.title}} </h1>
+				<hr class="title">
+			</section>
+		</div>
+
+		<!-- Portfolio -->
+		<!-- Content -->
+
+		<!-- Articles -->
+		<div class="12u">
+		    <section>
+				{% for article in articles %}
+					{% if article.tag == page.title %}
+		                <div class="4u", style = "padding-right:1em;">
+		                    <section class="box">
+		                        {% if article.picture is defined %}
+		                        <a href="{{ SITEURL }}/{{ article.url }}" class="image image-full"><img src="{{ article.picture }}" alt=""/></a>
+		                        {% endif %}
+		                        <header>
+		                            <hr>
+		                            <h2>{{article.title }}</h2>
+		                            <hr>
+		                        </header>
+		                        {{ article.summary }}
+		                        <footer class="actions">
+		                            <a href="{{ SITEURL }}/{{ article.url }}" class="button button-icon button-icon-1">Continue Reading</a>
+		                        </footer>
+		                    </section>
+		                </div>
+			        {% endif %}
+		        {% endfor %}
+		    </section>
+		</div>
+
+
+		<!-- Content -->
+		<section>
+			<div>
+				<div class="12u skel-cell-mainContent">
+					<!-- Content -->
+					<article class="box is-post">
+						{{ page.content }}
+					</article>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
+
+{% endblock %}
