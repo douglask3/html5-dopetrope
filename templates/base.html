@@ -127,9 +127,9 @@
 										{% else %}
 											<img src="{{ ABOUT_IMAGE }}" class="image image-full" alt="" />
 										{% endif %}
-										<p>
+										<h3>
 										{{ ABOUT_TEXT }}
-										</p>
+									</h3>
 										<footer>
 											{% if ABOUT_LINK is defined %}
 												<a href="{{ ABOUT_LINK }}" class="button">Find out more</a>
@@ -173,9 +173,6 @@
 										<h2>Contact</h2>
 									</header>
 									<ul class="social">
-										{% if FACEBOOK_USER %}
-											<li class="facebook"><a href="https://www.facebook.com/{{ FACEBOOK_USER }}" class="icon48 icon48-1">Facebook</a></li>
-										{% endif %}
 										{% if TWITTER_USER is defined %}
 											<li class="twitter"><a href="http://twitter.com/{{ TWITTER_USER }}" class="icon48 icon48-2">Twitter</a></li>
 										{% endif %}
@@ -185,6 +182,19 @@
 										{% if GOOGLEPLUS_USER %}
 											<li class="googleplus"><a href="https://plus.google.com/{{ GOOGLEPLUS_USER }}" class="icon48 icon48-6">Google+</a></li>
 										{% endif %}
+										{% if GITHUB_USER %}
+											<li class="github"><a href="https://github.com/{{ GITHUB_USER }}" class="icon48 icon48-7">Github</a></li>
+										{% endif %}
+										{% if BITBUCKET_USER %}
+											<li class="bitbucket"><a href="https://bitbucket.org/{{ BITBUCKET_USER }}" class="icon48 icon48-8">Bitbucket</a></li>
+										{% endif %}
+										{% if FLICKR_USER %}
+											<li><a href="https://flickr.com/{{ FLICKR_USER }}" class="iconFlickr">Flickr</a></li>
+										{% endif %}
+										{% if FACEBOOK_USER %}
+											<li class="facebook"><a href="https://www.facebook.com/{{ FACEBOOK_USER }}" class="icon48 icon48-1">Facebook</a></li>
+										{% endif %}
+
 									</ul>
 									{% if ADDRESS is defined or MAIL is defined or PHONE is defined %}
 									<ul class="contact">
@@ -200,6 +210,18 @@
 											<li>
 												<h3>Mail</h3>
 												<p><a href="mailto:{{ MAIL }}">{{ MAIL }}</a></p>
+											</li>
+										{% endif %}
+										{% if GITHUB_USER is defined %}
+											<li>
+												<h3>GitHub</h3>
+												<p><a href="https://github.com/{{ GITHUB_USER }}">github.com/{{ GITHUB_USER }}</a></li>
+											</li>
+										{% endif %}
+										{% if BITBUCKET_USER is defined %}
+											<li>
+												<h3>BitBucket</h3>
+												<p><a href="https://bitbucket.org/{{ BITBUCKET_USER }}">bitbucket.org/{{ BITBUCKET_USER }}</a></li>
 											</li>
 										{% endif %}
 										{% if PHONE %}
