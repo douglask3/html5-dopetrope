@@ -58,7 +58,9 @@
 		                        <header>
 		                            <hr>
 		                            <h2>{{article.title }}</h2>
-		                            <span class="byline">{{ article.date }}</span>
+									<span class="byline" align = "center">{{ article.date|strftime('%d') }}
+										                 {{ article.date|strftime('%B') }}
+														 {{ article.date|strftime('%Y') }}</span>
 		                            <hr>
 		                        </header>
 		                        {{ article.summary }}
