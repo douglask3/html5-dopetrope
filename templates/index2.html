@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="row">
+	<div class="12u">
+		{% if article.picture is defined %}
+		<a href="#" class="image image-full"><img src="{{ page.picture }}"/></a>
+		{% endif %}
+		{{ article.content }}
+	</div>
+</div>
+{% endblock %}
