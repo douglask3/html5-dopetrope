@@ -18,7 +18,10 @@
 										<li><a class="button" href="pages/{{ article.category.url[9:] }}">{{ article.category|capitalize }}</a></li>
 										{% endif %}
 										{% for tag in article.tags %}
-											<li><a class="button button-alt" href="{{ tag.url }}">{{ tag|capitalize }}</a></li>
+											{% if tag|string() != article.category|string() %}
+												<li><a class="button button-alt" href="{{ tag.url }}">{{ tag|capitalize }}</a></li>
+												<br>
+											{% endif %}
 										{% endfor %}
 									</ul>
 								</div>
@@ -47,35 +50,41 @@
 		<div class="12u">
 			<section>
 				{% set n = 0 %}
-				{% for article in articles if n < 3 %}
-					{% if article.tag == article.title %}
+				{% for articleX in articles if n < 3 %}
+					{% set test = [] %}
+					{% for tag in articleX.tags %}
+						{% if tag == article.title %}
+							{% if test.append(True) %} {% endif %}
+							<div class="4u", style = "padding-right:1em;">
+								<section class="box">
+									{% if articleX.picture is defined %}
+									<a href="{{ SITEURL }}/{{ articleX.url }}" class="image image-full"><img src="{{ articleX.picture }}" alt=""/></a>
+									{% endif %}
+									<header>
+										<hr>
+										<h2>{{articleX.title }}</h2>
+										<span class="byline" align = "center">{{ articleX.date|strftime('%d') }}
+															{{ articleX.date|strftime('%B') }}
+															{{ articleX.date|strftime('%Y') }}</span>
+										<hr>
+									</header>
+									{{ articleX.summary }}
+									<footer class="actions">
+										<a href="{{ SITEURL }}/{{ articleX.url }}" class="button button-icon button-icon-1">Continue Reading</a>
+									</footer>
+								</section>
+							</div>
+						{% endif %}
+					{% endfor %}
+					{% if test %}
 						{% set n = n + 1 %}
-						<div class="4u", style = "padding-right:1em;">
-							<section class="box">
-								{% if article.picture is defined %}
-								<a href="{{ SITEURL }}/{{ article.url }}" class="image image-full"><img src="{{ article.picture }}" alt=""/></a>
-								{% endif %}
-								<header>
-									<hr>
-									<h2>{{article.title }}</h2>
-									<span class="byline" align = "center">{{ article.date|strftime('%d') }}
-														{{ article.date|strftime('%B') }}
-														{{ article.date|strftime('%Y') }}</span>
-									<hr>
-								</header>
-								{{ article.summary }}
-								<footer class="actions">
-									<a href="{{ SITEURL }}/{{ article.url }}" class="button button-icon button-icon-1">Continue Reading</a>
-								</footer>
-							</section>
-						</div>
 					{% endif %}
 				{% endfor %}
 			</section>
 		</div>
 		<!-- More... -->
 		<p class="paginator">
-			<a href="{{ SITEURL }}/category/{{ article.url[6:] }}"> More {{ article.name }} posts here . . . </a>
+			<a href="{{ SITEURL }}/tag/{{ article.url }}"> More {{ article.name }} posts here . . . </a>
 		</p>
 		<!-- End Tag news feed -->
 	</div>
